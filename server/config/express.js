@@ -1,6 +1,6 @@
 const path = require('path'),
     express = require('express'),
-    mongoose = require('mongoose'),
+    sqlite3 = require('sqlite3').verbose(),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
     exampleRouter = require('../routes/examples.server.routes');
@@ -10,11 +10,11 @@ module.exports.init = () => {
         connect to database
         - reference README for db uri
     */
-    mongoose.connect(process.env.DB_URI || require('./config').db.uri, {
-        useNewUrlParser: true
+    module.exports.db = new sqlite3.Database(require('./config').db.uri, sqlite3.OPEN_READWRITE, (err) => {
+        if (err) {
+            console.log(err)
+        }
     });
-    mongoose.set('useCreateIndex', true);
-    mongoose.set('useFindAndModify', false);
 
     // initialize app
     const app = express();
