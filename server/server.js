@@ -1,7 +1,25 @@
-const express = require('./config/express.js')
- 
-// Use env port or default
-const port = process.env.PORT || 5000;
+const express = require('express');
+const cors = require('cors');
+const dbController = require('./controllers/database.controller');
+const dbRouter = require('./routes/database.routes');
 
-const app = express.init()
-app.listen(port, () => console.log(`Server now running on port ${port}!`));
+const app = express();
+
+dbController.initiate();
+
+var corsOptions = {
+  origin: '*',
+  optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
+
+app.use('/api', dbRouter);
+
+process.on('exit', function() {
+    dbController.close();
+});
+
+app.listen(5000, () => {
+  console.log('Server started!');
+});
