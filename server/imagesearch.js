@@ -5,7 +5,7 @@ const urlBeg = 'https://app.zenserp.com/api/v2/search?q=';
 const urlEnd = '&tbm=isch&location=United+States&search_engine=google.com&hl=en&gl=US';
 
 getUrl = function(term) {
-    return urlBeg.concat(term.replace(' ', '+'), urlEnd);
+    return urlBeg.concat(term.replace(' ', '+'), '+flower', urlEnd);
 }
 
 exports.getFlowerImages = async function(flowers, flowerImages) {
@@ -13,7 +13,7 @@ exports.getFlowerImages = async function(flowers, flowerImages) {
     return new Promise((resolve) => {
 
         var headers = {
-            'apikey': '27bf9700-1c8f-11ea-a434-ef3aef05c40d'
+            'apikey': 'eee34ba0-1d2b-11ea-b866-a30cb0d223f1'
         };
     
         for(let i = 0; i < flowers.length; i++)

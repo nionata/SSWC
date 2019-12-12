@@ -1,5 +1,4 @@
 const sqlite3 = require('sqlite3').verbose();
-const axios = require('axios');
 const imagesearch = require('../imagesearch');
 
 let db;
