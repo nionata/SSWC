@@ -1,25 +1,25 @@
 import React from 'react';
-import logo from '../../assets/logo.svg';
 import './Home.css';
+import axios from 'axios';
 
-function Home() {
-    return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                </a>
-            </header>
-        </div>
-    );
+class Home extends React.Component {
+    constructor(props) {
+        super(props);
+
+        axios.get('/api/flower').then((res) => {
+            console.log(res)
+        })
+    }
+
+    render() {
+        return (
+            <div className="Home">
+                <div className="Home-Body">
+                    Welcome
+                </div>
+            </div>
+        )
+    }
 }
 
 export default Home;
