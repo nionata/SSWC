@@ -3,7 +3,7 @@ import Sighting from './Sighting'
 import './Sightings.css'
 
 const Sightings = ({ sightings }) => {
-    const header = {"NAME": "NAME", "PERSON": "PERSON", "LOCATION": "LOCATION", "SIGHTED": "SIGHTED"}
+    const header = {"PERSON": "PERSON", "LOCATION": "LOCATION", "SIGHTED": "SIGHTED"}
 
     return (
         <div className="Sightings">
