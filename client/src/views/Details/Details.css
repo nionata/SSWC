@@ -7,6 +7,12 @@
     flex-direction: column;
 }
 
+.Details-Body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
 .Hide-Details {
     flex-basis: 0vw;
     width: 0;

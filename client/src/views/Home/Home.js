@@ -44,7 +44,7 @@ class Home extends React.Component {
         return (
             <div className="Home">
                 <Flowers flowers={flowers} onFlowerClick={this.selectFlower} />
-                <Details flowers={flowers} selected={selected} sightings={sightings} onDeselect={() => this.setState({selected: -1})} />
+                <Details flowers={flowers} selected={selected} sightings={sightings} onDeselect={() => this.setState({selected: -1, sightings: []})} />
             </div>
         )
     }
