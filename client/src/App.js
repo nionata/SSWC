@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, Redirect  } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Header from './views/Header/Header'
 import Home from "./views/Home/Home"
 import NotFound from "./views/NotFound/NotFound"

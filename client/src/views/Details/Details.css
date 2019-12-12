@@ -1,0 +1,37 @@
+.Details {
+    flex-basis: 40vw;
+    padding: 2vw;
+    background-color: slategray;
+    transition: all 1s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.Hide-Details {
+    flex-basis: 0vw;
+    width: 0;
+    padding: 0;
+    transition: all 1s ease;
+}
+
+.Details-Image-Holder {
+    display: flex;
+    justify-content: center;
+}
+
+.Details-Image {
+    width: 50%;
+    margin-top: 1vw;
+}
+
+.Details-Header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+.Details-Header p {
+    margin: 1vw 1vw 0vw 1vw;
+}

@@ -5,14 +5,17 @@ import Nav from "react-bootstrap/Nav"
 class Header extends React.Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            user: null 
+        }
     }
 
     render() {
         return (
             <Navbar bg="dark" variant="dark">
-                <Navbar.Brand href="">Southern Sierra Wildflower Club</Navbar.Brand>
+                <Navbar.Brand href="/">Southern Sierra Wildflower Club</Navbar.Brand>
                 <Nav className="mr-auto">
-                    <Nav.Link href="/">Home</Nav.Link>
                 </Nav>
                 <Nav className="">
                     <Nav.Link href="/login">Login</Nav.Link>

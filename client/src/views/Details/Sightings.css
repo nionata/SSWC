@@ -1,0 +1,31 @@
+.Sightings {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    margin-top: 2vw;
+}
+
+.Sightings-Header {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.Sightings-Body {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    height: 100%;
+}
+
+.Sighting {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+}
+
+.Sighting p {
+    flex: 1;
+    margin: 1vh 2vh 1vh 2vh;
+}
