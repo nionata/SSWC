@@ -13,7 +13,7 @@ class Details extends React.Component {
                         <span className="Details-Body">
                             <i className="fas fa-times" onClick={() => onDeselect()} />
                             <div className="Details-Image-Holder">
-                                <img className="Details-Image" src={flowers[selected] && flowers[selected].image ? flowers[selected].image : "https://images.pexels.com/photos/36764/marguerite-daisy-beautiful-beauty.jpg?auto=compress&cs=tinysrgb&dpr=2&w=500"} alt="flower" />
+                                <img className="Details-Image" src={flowers[selected] && flowers[selected].IMAGE ? flowers[selected].IMAGE : "https://images.pexels.com/photos/36764/marguerite-daisy-beautiful-beauty.jpg?auto=compress&cs=tinysrgb&dpr=2&w=500"} alt="flower" />
                             </div>
                             <div className="Details-Header">
                                 <p><b>{selected !== -1 && flowers[selected].COMNAME}</b></p>
