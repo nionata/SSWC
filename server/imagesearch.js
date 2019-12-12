@@ -13,7 +13,7 @@ exports.getFlowerImages = async function(flowers, flowerImages) {
     return new Promise((resolve) => {
 
         var headers = {
-            'apikey': '96a25620-1c7a-11ea-803e-5d1937d6eb6d'
+            'apikey': '27bf9700-1c8f-11ea-a434-ef3aef05c40d'
         };
     
         for(let i = 0; i < flowers.length; i++)
@@ -25,18 +25,24 @@ exports.getFlowerImages = async function(flowers, flowerImages) {
                 headers: headers,
                 limit: 1
             };
-            
+
             function callback(error, response, body) {
                 if (!error && response.statusCode == 200) {
-                    console.log(JSON.parse(body).image_results[0].sourceUrl);
-                    flowerImages.push(JSON.parse(body).image_results[0].sourceUrl);
+                    //console.log(JSON.parse(body).image_results[0].sourceUrl);
+                    flowerImages.push({
+                        flower: flower,
+                        imageUrl: JSON.parse(body).image_results[0].sourceUrl
+                    });
                 }
+                else
+                    flowerImages.push('/#');
+
+                if(flowerImages.length == flowers.length)
+                    resolve();
             }
     
             request(options, callback);
         }
-
-        resolve();
 
     });
 }

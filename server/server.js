@@ -28,4 +28,6 @@ app.listen(5000, () => {
     console.log('Server started!');
 });
 
-dbController.addFlowerImages();
+dbController.createIndices();
+dbController.createLogs();
+dbController.addFlowerImagesIfNeeded();
