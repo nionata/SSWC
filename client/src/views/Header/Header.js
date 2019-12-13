@@ -1,40 +1,34 @@
 import React from 'react';
 import Navbar from "react-bootstrap/Navbar"
 import Nav from "react-bootstrap/Nav"
+import './Header.css'
 
-class Header extends React.Component {
-    // constructor(props) {
-    //     super(props);
-
-    //     this.state = {
-    //         user: null 
-    //     }
-    // }
-
-    auth = (user) => {
-        if (user === "") {
-            return (
-                <Nav className="">
-                    <Nav.Link href="/login">Login</Nav.Link>
-                    <Nav.Link href="/register">Register</Nav.Link>
-                </Nav>
-            )
-        } else {
-            return <p>{user}</p>
-        }
-    }
-
-    render() {
-        const { user } = this.props
+const auth = (user) => {
+    if (user === "") {
         return (
-            <Navbar bg="dark" variant="dark">
-                <Navbar.Brand href="/">Southern Sierra Wildflower Club</Navbar.Brand>
-                <Nav className="mr-auto">
-                </Nav>
-                {this.auth(user)}
-            </Navbar>
+            <Nav className="">
+                <Nav.Link href="/login">Login</Nav.Link>
+                <Nav.Link href="/register">Register</Nav.Link>
+            </Nav>
+        )
+    } else {
+        return (
+            <Nav className="">
+                <Nav.Item className="user">{user}</Nav.Item>
+            </Nav>
         )
     }
+}
+
+const Header = ({ user }) => {
+    return (
+        <Navbar bg="dark" variant="dark">
+            <Navbar.Brand href="/">Southern Sierra Wildflower Club</Navbar.Brand>
+            <Nav className="mr-auto">
+            </Nav>
+            {auth(user)}
+        </Navbar>
+    )
 }
 
 export default Header;
