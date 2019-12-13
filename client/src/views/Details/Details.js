@@ -1,10 +1,11 @@
 import React from 'react'
 import Sightings from './Sightings'
 import './Details.css'
+import Button from 'react-bootstrap/Button'
 
 class Details extends React.Component {
     render() {
-        const { selected, flowers, sightings, onDeselect } = this.props
+        const { selected, flowers, sightings, onDeselect, user, newSighting, updateFlower, deleteFlower } = this.props
 
         return (
             <div className={selected !== -1 ? 'Details' : 'Hide-Details'}>
@@ -21,6 +22,11 @@ class Details extends React.Component {
                                 <p>{selected !== -1 && "Species: " + flowers[selected].SPECIES}</p>
                             </div>
                             <Sightings sightings={sightings} />
+                            <div className="Details-Buttons">
+                                <Button variant="light" onClick={newSighting}>Add Sighting</Button>
+                                <Button variant="light" onClick={updateFlower}>Update Flower</Button>
+                                <Button variant="danger" onClick={deleteFlower}>Delete Flower</Button>
+                            </div>
                         </span>
                     )
                 }
