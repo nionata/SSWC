@@ -30,7 +30,7 @@ app.use(session({ //initialize express-session to allow us track the logged-in u
 app.use('/api', dbRouter);
 app.use('/login', loginRouter);
 app.use('/register', registerRouter);
-app.use('/', pingRouter);
+app.use('/ping', pingRouter);
 
 process.on('exit', function() {
     dbController.close();

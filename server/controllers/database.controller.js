@@ -166,7 +166,7 @@ exports.deleteSighting = async function(req, res) {
 };
 
 exports.ping = async function(req, res) {
-    return res.send(req.session.user)
+    return res.json(req.session.user)
 }
 
 exports.checkMember = async function(req, res) {
