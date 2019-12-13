@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button'
 
 class Details extends React.Component {
     render() {
-        const { selected, flowers, sightings, onDeselect, authed, newSighting, updateFlower, deleteFlower, deleteSigthing } = this.props
+        const { selected, flowers, sightings, onDeselect, authed, newSighting, updateFlower, deleteFlower, deleteSighting } = this.props
 
         return (
             <div className={selected !== -1 ? 'Details' : 'Hide-Details'}>
@@ -21,7 +21,7 @@ class Details extends React.Component {
                                 <p>{selected !== -1 && "Genus: " + flowers[selected].GENUS}</p>
                                 <p>{selected !== -1 && "Species: " + flowers[selected].SPECIES}</p>
                             </div>
-                            <Sightings sightings={sightings} authed={authed} onDelete={deleteSigthing} />
+                            <Sightings sightings={sightings} authed={authed} onDelete={deleteSighting} />
                             {
                                 authed && 
                                     <div className="Details-Buttons">

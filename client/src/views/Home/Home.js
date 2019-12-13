@@ -25,6 +25,7 @@ class Home extends React.Component {
         this.onNewSighting = this.onNewSighting.bind(this)
         this.onUpdateFlower = this.onUpdateFlower.bind(this)
         this.deleteFlower = this.deleteFlower.bind(this)
+        this.deleteSighting = this.deleteSighting.bind(this)
 
         this.getFlowers()
     }
@@ -105,11 +106,10 @@ class Home extends React.Component {
         }
     }
 
-    deleteSighting(location, sighted) {
+    deleteSighting(person, location, sighted) {
         const { flowers, selected } = this.state
-        const { user } = this.props
 
-        const query = encodeURIComponent(`${flowers[selected].COMNAME}#${user}#${location}#${sighted}`)
+        const query = encodeURIComponent(`${flowers[selected].COMNAME}#${person}#${location}#${sighted}`)
         console.log(query);
 
         axios.delete('/api/sighting/' + query).then((res) => {
