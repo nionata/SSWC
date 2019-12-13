@@ -26,7 +26,7 @@ executeQuery = function(query, params, res) {
     return new Promise(resolve => {
         db.run(sanitize(query), params, function(err) {
             if(err && !res.headersSent) res.status(404).send(err);
-            
+
             resolve();
         });
     });
@@ -71,17 +71,19 @@ executeGetFlowers = function(flowers) {
     });
 }
 
-executeCheckMember = function(member, res) {
+executeCheckMember = function(req, res) {
 
     return new Promise(resolve => {
         let query = 'SELECT * FROM MEMBERS WHERE NAME=?;';
-        db.all(sanitize(query), [member], (err, rows) => {
+        db.all(sanitize(query), [req.member], (err, rows) => {
             if(err) console.log(err);
 
-            if(rows.length > 0)
+            if(rows.length > 0) {
+                req.session.user = req.member
                 res.send(true);
-            else   
+            } else {
                 res.send(false);
+            } 
 
             resolve();
         });
@@ -163,14 +165,30 @@ exports.deleteSighting = async function(req, res) {
     if(!res.headersSent) res.send(`Row(s) deleted ${this.changes}`);
 };
 
+exports.ping = async function(req, res) {
+    return res.send(req.session.user)
+}
+
 exports.checkMember = async function(req, res) {
-    await executeCheckMember(req.member, res);
+    await executeCheckMember(req, res);
 }
 
 exports.addMember = async function(req, res) {
-    let query = 'INSERT INTO MEMBERS VALUES(?, ?, ?);';
 
-    await executeQuery(query, [req.member, new Date(), NULL], res);
+    return new Promise(resolve => {
+        let query = 'INSERT INTO MEMBERS VALUES(?, ?, ?);';
+        db.all(sanitize(query), [req.member, new Date(), 0], (err, rows) => {
+            if(!err) {
+                req.session.user = req.member
+                res.send(true);
+            } else {
+                console.log(err);
+                res.send(false);
+            } 
+
+            resolve();
+        });
+    })
 }
 
 exports.getFlower = function(req, res, next, id) {
