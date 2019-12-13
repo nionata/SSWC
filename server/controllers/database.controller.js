@@ -297,6 +297,17 @@ exports.addFlowerImagesIfNeeded = function() {
             console.log('Flower images already in table.');
         }
     }); 
+
+    let updateQuery = 'UPDATE FLOWERS SET IMAGE=? WHERE COMNAME=?;';
+    let updateFlowers = ['Primrose monkeyflower', 'Woodland star', 'Tinkers penny'];
+    let updateUrls = ['https://idfg.idaho.gov/species/sites/default/files/styles/medium640/public/taxa/64505_orig.jpg?itok=fiELsyrS', 'http://www.healthyhomegardening.com/images/fadinha_green/white_flower_035.jpg', 'http://www.paulnoll.com/Oregon/Wildflower/plant-Tinkers-Penny-bloom-big.jpg'];
+
+    for(let i = 0; i < updateFlowers.length; i++)
+    {
+        db.run(updateQuery, [updateUrls[i], updateFlowers[i]], function(err) {
+            if(err) console.log(err);
+        });
+    }
 };
 
 exports.createIndices = function() {
