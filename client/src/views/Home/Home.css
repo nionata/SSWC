@@ -1,6 +1,6 @@
 .Home {
     display: flex;
-    background-color: lightblue;
+    background-color: #009688;
     height: calc(100vh - 56px);
 }
 

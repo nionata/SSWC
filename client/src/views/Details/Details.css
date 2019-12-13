@@ -1,7 +1,7 @@
 .Details {
     flex-basis: 40vw;
     padding: 2vw;
-    background-color: slategray;
+    background-color: #B2DFDB;
     transition: all 1s ease;
     display: flex;
     flex-direction: column;
