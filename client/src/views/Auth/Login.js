@@ -33,7 +33,7 @@ class Login extends React.Component {
                     <Card.Body>
                         <Card.Title>Login</Card.Title>
                         {this.state.err !== "" && <p>{this.state.err}</p>}
-                        <input className="authInput" onChange={(e) => this.setState({name: e.target.value})} />
+                        <input className="authInput" placeholder="Name" onChange={(e) => this.setState({name: e.target.value})} />
                         <Button variant="dark" onClick={() => this.onLogin()}>Login</Button>
                     </Card.Body>
                 </Card>
