@@ -1,9 +1,2 @@
-- Insert sighting
+
 - Delete sighting
-- Delete flower
-- Update flower
-- Login
-- Register
-
-
-- Ping for user auth

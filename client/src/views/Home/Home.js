@@ -105,6 +105,20 @@ class Home extends React.Component {
         }
     }
 
+    deleteSighting(location, sighted) {
+        const { flowers, selected } = this.state
+        const { user } = this.props
+
+        const query = encodeURIComponent(`${flowers[selected].COMNAME}#${user}#${location}#${sighted}`)
+        console.log(query);
+
+        axios.delete('/api/sighting/' + query).then((res) => {
+            console.log(res)
+
+            this.selectFlower(selected)
+        })
+    }
+
     render() {
         const { flowers, selected, sightings, modals } = this.state
         const { user } = this.props
@@ -114,7 +128,7 @@ class Home extends React.Component {
                 <NewSighting show={modals.sighting} onHide={this.onClose} onSubmit={this.onNewSighting} />
                 <UpdateFlower show={modals.flower} onHide={this.onClose} onSubmit={this.onUpdateFlower} />
                 <Flowers flowers={flowers} onFlowerClick={this.selectFlower} />
-                <Details deleteFlower={this.deleteFlower} user={user} flowers={flowers} selected={selected} sightings={sightings} newSighting={() => this.onOpen(0)} updateFlower={() => this.onOpen(1)} onDeselect={() => this.setState({selected: -1, sightings: []})} />
+                <Details deleteFlower={this.deleteFlower} authed={user !== ""} flowers={flowers} selected={selected} sightings={sightings} newSighting={() => this.onOpen(0)} updateFlower={() => this.onOpen(1)} deleteSighting={this.deleteSighting} onDeselect={() => this.setState({selected: -1, sightings: []})} />
             </div>
         )
     }
